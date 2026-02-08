@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: chat-roulette-bot
+    env: node
+    region: frankfurt
+    plan: free
+    buildCommand: npm install
+    startCommand: node src/bot-final.js
+    envVars:
+      - key: NODE_VERSION
+        value: 18.17.0
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
