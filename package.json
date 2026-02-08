@@ -1,0 +1,66 @@
+{
+  "name": "telegram-chatroulette-bot",
+  "version": "1.0.0",
+  "description": "Advanced Telegram Chat Roulette Bot with AI moderation",
+  "main": "src/bot-final.js",
+  "scripts": {
+    "start": "node src/bot-final.js",
+    "dev": "nodemon src/bot-final.js",
+    "migrate": "node src/database/migrate.js",
+    "test": "jest",
+    "lint": "eslint src/**/*.js",
+    "lint:fix": "eslint src/**/*.js --fix",
+    "format": "prettier --write \"src/**/*.js\"",
+    "docker:build": "docker build -t chatroulette-bot .",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f bot",
+    "backup:db": "pg_dump -U postgres chatroulette_bot > backup_$(date +%Y%m%d_%H%M%S).sql",
+    "backup:redis": "redis-cli SAVE && cp /var/lib/redis/dump.rdb backup_redis_$(date +%Y%m%d_%H%M%S).rdb"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "chatroulette",
+    "matchmaking",
+    "ai-moderation",
+    "chat",
+    "random-chat",
+    "nodejs",
+    "postgresql",
+    "redis"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/telegram-chatroulette-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/telegram-chatroulette-bot/issues"
+  },
+  "homepage": "https://github.com/your-username/telegram-chatroulette-bot#readme",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.5",
+    "bcrypt": "^5.1.1",
+    "better-sqlite3": "^12.6.2",
+    "compromise": "^14.11.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "natural": "^6.10.4",
+    "node-telegram-bot-api": "^0.66.0",
+    "pg": "^8.11.3",
+    "redis": "^4.6.12",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.2",
+    "prettier": "^3.1.1"
+  }
+}
